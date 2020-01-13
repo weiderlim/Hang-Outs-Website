@@ -1,0 +1,66 @@
+{% extends 'maps_app/base.html' %}
+{% block content %}
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-light text-black sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href={% url 'maps_app_view_search' %}><img src="{% static "maps_app/hangouts.png" %}" alt="My image" class="icon-nav"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon icon-bar"></span>
+      </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto" style="list-style-type: none;">
+              <li class="nav-item">
+                <a href={% url 'maps_app_view_search' %} class="nav-link nav-home">Search</a>
+              </li>
+              <li class="nav-item">
+                <a href={% url 'maps_app_view_results' %} class="nav-link nav-home">Results</a>
+              </li>
+              <li class="nav-item">
+                <a href={% url 'maps_app_view_info' %} class="nav-link nav-home">Info</a>
+              </li>
+            </ul>
+          </div>
+    </div>
+  </nav>      
+
+<!-- Masthead -->
+<header class="masthead text-center text-white">
+    <div class="overlay"></div>
+    <div class="container">
+    <div class="row">
+        <div class="col-xl-9 mx-auto">
+        <h1 class="mb-5">Welcome to Hang-Outs!</h1>
+        <h4>Find the most convenient places of interest that you can meet up with friends or family!</h4>
+        </div>
+    </div>
+    </div>
+</header>
+
+
+<!-- Icons Grid -->
+<section class="features-icons text-center">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="features-icons-icon d-flex">
+                <i class="icon-screen-desktop m-auto text-primary"></i>
+            </div>
+            <img class="icon-center" src="{% static "maps_app/home.png" %}" alt="My image">
+
+            <h3>Search Category and Locations</h3>
+            <p class="lead">Enter category of places of interest and the locations of the people that you want to 'Hang-Out' with.</p>
+
+            <form method="POST" style="margin-left: auto;"> {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Search" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+
+<br>
+<br>
+
+    
+{% endblock content %}

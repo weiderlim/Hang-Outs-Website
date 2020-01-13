@@ -1,0 +1,58 @@
+{% extends 'maps_app/base.html' %}
+{% block content %}
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-dark text-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href={% url 'maps_app_view_search' %}><img src="{% static "maps_app/hangouts_white.png" %}" alt="My image" class="icon-nav"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon icon-bar"></span>
+      </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto" style="list-style-type: none;">
+              <li class="nav-item">
+                <a href={% url 'maps_app_view_search' %} class="nav-link nav-nothome">Search</a>
+              </li>
+              <li class="nav-item">
+                <a href={% url 'maps_app_view_results' %} class="nav-link nav-nothome">Results</a>
+              </li>
+              <li class="nav-item">
+                <a href={% url 'maps_app_view_info' %} class="nav-link nav-nothome">Info</a>
+              </li>
+            </ul>
+          </div>
+    </div>
+  </nav>     
+
+<div class="container">
+    <br>
+    <div>
+        <h4>Disclaimers:</h4>
+        <ul>
+            <li>By no means are the results from this website guranteed to be up to date and reflect current geographical conditions. They are subjected to Google Maps API's that can be found at the <a href="https://developers.google.com/maps/documentation">Google Maps Platform</a>.</li>
+            <li>The API's used in this website are the Places Search API, Places Details API, Maps Embed API, Query AutoComplete API and the Map Static API.</li>
+            <li>None of your personal information will be used in any way without your permission. </li>
+        </ul>
+            
+        <h4>How It Works:</h4>
+
+        <ul>
+            <li>Enter the category of places that you and your friends would like to meet up at and your addresses.</li>
+            <li>The coordinates of all the addresses collected and the center point is calculated by triangulation.</li>
+            <li>The Google Places API searches for nearby places with the specified category from the center point.</li>
+            <li>The Google Details API converts the coordinates from the result of the API above to a formatted addresses</li>
+            <li>The Google Maps Embed API and Google Map Static API uses the formatted address and center point coordinates to give visualisation of the results and locations of the addresses relative to the results.</li>
+        </ul>
+
+        <h4>Known Issues:</h4>
+
+        <ul>
+            <li>Occasionally, there are results that does not fit the category. This is due to the Google API's returning such results based on Google user inputs, which might not be accurate.</li>
+        </ul>
+        <br>
+        <br>
+
+        <a href={% url 'maps_app_view_search' %} class="button text-center"><h5>Back to Search</h5></a>
+        <div style="height: 400px;"></div>
+    </div>
+</div>
+{% endblock content %}
