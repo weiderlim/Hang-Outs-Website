@@ -12,26 +12,28 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-light text-black sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
       <div class="container">
         <a class="navbar-brand" href={% url 'maps_app_view_search' %}><img src="{% static "maps_app/hangouts.png" %}" alt="My image" class="icon-nav"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon icon-bar"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto" style="list-style-type: none;">
-                <li class="nav-item">
-                  <a href={% url 'maps_app_view_search' %} class="nav-link nav-home">Search</a>
-                </li>
-                <li class="nav-item">
-                  <a href={% url 'maps_app_view_results' %} class="nav-link nav-home">Results</a>
-                </li>
-                <li class="nav-item">
-                  <a href={% url 'maps_app_view_info' %} class="nav-link nav-home">Info</a>
-                </li>
-              </ul>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a href={% url 'maps_app_view_search' %} class="nav-link nav-home">Search</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href={% url 'maps_app_view_results' %} class="nav-link nav-home">Results</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href={% url 'maps_app_view_info' %} class="nav-link nav-home">Info</a>
+                  </li>
+                </ul>
             </div>
-      </div>
-    </nav>      
+        </div>
+    </nav>   
 
     {% if messages %}
       {% for message in messages %}
