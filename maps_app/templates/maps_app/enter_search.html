@@ -1,26 +1,6 @@
 {% extends 'maps_app/base.html' %}
 {% block content %}
 {% load static %}
-<nav class="navbar navbar-expand-lg bg-dark text-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href={% url 'maps_app_view_search' %}><img src="{% static "maps_app/hangouts_white.png" %}" alt="My image" class="icon-nav"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon icon-bar"></span>
-      </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto" style="list-style-type: none;">
-              <li class="nav-item">
-                <a href={% url 'maps_app_view_search' %} class="nav-link nav-nothome">Search</a>
-              </li>
-              <li class="nav-item">
-                <a href={% url 'maps_app_view_results' %} class="nav-link nav-nothome">Results</a>
-              </li>
-              <li class="nav-item">
-                <a href={% url 'maps_app_view_info' %} class="nav-link nav-nothome">Info</a>
-              </li>
-            </ul>
-          </div>
-    </div>
-  </nav>     
 
 <div class="container-fluid" style="text-align: center;">
     <br>

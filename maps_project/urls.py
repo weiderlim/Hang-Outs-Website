@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# import path directly from the app, not redirect to the app urls.py, another method
+from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # name is given so this path can be followed by href in html
     path('', include('maps_app.urls')),
+    path('register', user_views.register, name='register'),
 ]

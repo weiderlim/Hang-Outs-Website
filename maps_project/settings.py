@@ -30,6 +30,8 @@ ALLOWED_HOSTS = ['172.104.191.56', 'www.hang-outs.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'maps_app.apps.MapsAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -118,3 +120,4 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

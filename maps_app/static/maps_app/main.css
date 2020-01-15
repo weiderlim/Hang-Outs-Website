@@ -1,6 +1,6 @@
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 700;
+h1, h2, h3, h4, h5, h6, li, .footer-copyright, a {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 200;
 }
 
 .navbar{
@@ -59,16 +59,11 @@ header.masthead h1 {
     display: block;
     height: 700px;
     width: 100%;
+    padding-bottom: 20px;
 }
 
 .caption {
     margin-top: 10px;
-}
-
-p {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;    
 }
 
 label {
@@ -104,6 +99,22 @@ label {
     color: black;
 }
 
-.nav-nothome {
+.nav-nothome{
     color: white;
+}
+
+.result-section1 {
+    background-color: #444444;
+    /* padding-bottom: 10px; */
+}
+
+.search-back {
+    font-size: large;
+}
+
+.centred {
+    display: block;
+    height: 50px;
+    width: 200px;
+
 }

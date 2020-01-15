@@ -2,98 +2,79 @@
 {% block content %}
 {% load static %}
 
-<nav class="navbar navbar-expand-lg bg-dark text-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href={% url 'maps_app_view_search' %}><img src="{% static "maps_app/hangouts_white.png" %}" alt="My image" class="icon-nav"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon icon-bar"></span>
-      </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto" style="list-style-type: none;">
-              <li class="nav-item">
-                <a href={% url 'maps_app_view_search' %} class="nav-link nav-nothome">Search</a>
-              </li>
-              <li class="nav-item">
-                <a href={% url 'maps_app_view_results' %} class="nav-link nav-nothome">Results</a>
-              </li>
-              <li class="nav-item">
-                <a href={% url 'maps_app_view_info' %} class="nav-link nav-nothome">Info</a>
-              </li>
-            </ul>
-          </div> 
-    </div>
-  </nav>      
 
-<div class="container-fluid">
-    <div class="container">
+<div class="result-section1">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-lg-4 col-md-3 col-sm-2 col-2">
                 {% if category_result == 'Cafes' %}
-                <img src="{% static "maps_app/cafe_icon.png" %}" alt="icon" class="icon" style="float: right; margin-top: 30px;">
+                <img src="{% static "maps_app/cafe_white.png" %}" alt="icon" class="icon" style="float: right; margin-top: 10px;">
                 {% endif %}
                 {% if category_result == 'Bars' %}
-                <img src="{% static "maps_app/bar_icon.png" %}" alt="icon" class="icon" style="float: right; margin-top: 30px;">
+                <img src="{% static "maps_app/bar_white.png" %}" alt="icon" class="icon" style="float: right; margin-top: 10px;">
                 {% endif %}
                 {% if category_result == 'Gyms' %}
-                <img src="{% static "maps_app/gym_icon.png" %}" alt="icon" class="icon" style="float: right; margin-top: 30px;">
+                <img src="{% static "maps_app/gym_white.png" %}" alt="icon" class="icon" style="float: right; margin-top: 10px;">
                 {% endif %}
                 {% if category_result == 'Restaurants' %}
-                <img src="{% static "maps_app/restaurant_icon.png" %}" alt="icon" class="icon" style="float: right; margin-top: 30px;">
+                <img src="{% static "maps_app/restaurant_white.png" %}" alt="icon" class="icon" style="float: right; vertical-align: middle;">
                 {% endif %}
                 {% if category_result == 'Shopping Malls' %}
-                <img src="{% static "maps_app/shop_icon.png" %}" alt="icon" class="icon" style="float: right; margin-top: 30px;">
+                <img src="{% static "maps_app/shopping_white.png" %}" alt="icon" class="icon" style="float: right; margin-top: 10px;">
                 {% endif %}
                 {% if category_result == 'Subway Stations' %}
-                <img src="{% static "maps_app/subway_icon.png" %}" alt="icon" class="icon" style="float: right; margin-top: 30px;">
+                <img src="{% static "maps_app/subway_white.png" %}" alt="icon" class="icon" style="float: right; margin-top: 10px;">
                 {% endif %}
             </div>
-            <div class="col-sm-7">
-                <h4 class="text-center" style="padding-bottom: 40px; padding-top: 40px;">{{ category_result }} near Center Point of User Locations</h4>
+            <div class="col-lg-8 col-md-9 col-sm-10 col-10">
+                <h4 class="text-left" style="padding-bottom: 20px; padding-top: 20px; color: white;">{{ category_result }} near Center Point of User Locations</h4>
             </div>
+        </div>
+    
+        <iframe 
+            iframe id="idIframe" onload="iframeLoaded()"
+            frameborder="0" scrolling="no"
+            src={{ maps_embed_url }} allowfullscreen
+            class="centralize embedded-map">
+        </iframe>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-2 col-1"></div>
+        <div class="col-sm-1 col-1">
+            <img src="{% static "maps_app/map_icon.png" %}" alt="icon" class="icon" style="float: right;"> 
+        </div>
+        <div class="col-lg-8 col-md-9 col-sm-9 col-10">
+            <h3 class="text-left" style="padding-bottom: 20px; padding-top: 20px; font-weight: 300;">User Locations Relative to Center Point</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-md-1 col-sm-0 col-0"></div>
+        <div class="col-lg-10 col-md-11 col-sm-12 col-12">
+            <ul style="list-style-type: none;">
+                {% for add in user_add %}
+                <li><strong>Location {{ add.0 }}</strong> : {{ add.1 }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
     
-
-    <iframe 
-        iframe id="idIframe" onload="iframeLoaded()"
-        frameborder="0" scrolling="no"
-        src={{ maps_embed_url }} allowfullscreen
-        class="centralize embedded-map">
-    </iframe>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <img src="{% static "maps_app/map_icon.png" %}" alt="icon" class="icon" style="float: right; margin-top: 30px;"> 
-            </div>
-            <div class="col-sm-9">
-                <h4 class="text-center" style="padding-bottom: 40px; padding-top: 40px; float: left;">User Locations Relative to Center Point</h4>
-            </div>
-        </div>
-    </div>
-
-    <div style="display: block; margin-left: 200px; margin-right: auto;">
-        <ul>
-            {% for add in user_add %}
-            <li><strong>Location {{ add.0 }}</strong> : {{ add.1 }}</li>
-            {% endfor %}
-        </ul s>
-    </div>
-
     <div class="centralize">
-        <img src={{ maps_static_user_url }} alt="Static Users Map" class="static-map border border-dark rounded">            
+        <img src={{ maps_static_user_url }} alt="Static Users Map" class="static-map border rounded">            
     </div>
 
     <br>
     <br>
 
     <div style="text-align: center;">
-        <form action={% url 'maps_app_view_search' %}">
-            <input type="submit" value="Make Another Search" class="btn btn-primary">
-        </form>
+        <a href={% url 'maps_app_view_search' %} class="search-back"><h5>Make Another Search</h5></a>
     </div>
-
-    <br>
-    <br>
 </div>
+<br>
+<br>
+
     
 {% endblock content %}
